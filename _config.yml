@@ -16,11 +16,11 @@ minimal_mistakes_skin    :  "air" #"default", "air", "aqua", "contrast", "dark",
 
 # Site Settings
 locale                   : "en-US"
-title                    : "Site Title"
-title_separator          : "-"
-subtitle                 : # site tagline that appears below site title in masthead
-name                     : "Your Name"
-description              : "An amazing website."
+title                    : "Leeilju's blog for Autonomous system"
+title_separator          : "|"
+subtitle                 : "A person's value after death is not determined by what they collected while they were alive, by what they gave to others."
+name                     : "Lee il ju"
+description              : "Blog for post what i have studied, done"
 url                      : "https://leeilju.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
 repository               : # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
@@ -95,7 +95,7 @@ analytics:
 author:
   name             : "Your Name"
   avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
-  bio              : "I'm studying **Autonomoous System**."
+  bio              : "I'm studying **Autonomous System**."
   location         : "Somewhere"
   email            :
   links:
