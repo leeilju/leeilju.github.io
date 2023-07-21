@@ -42,8 +42,8 @@ int main() {
 ```
 
 > The address of i is: 0x7fbb976b1e50
-The address of j is: 0x7fbb976b1e54
-> 
+
+> The address of j is: 0x7fbb976b1e54
 
 
 
@@ -76,8 +76,8 @@ int main()
 ```
 
 > The address of i is:          0x7feb1466fe4c
-The variable pointer_to_i is: 0x7feb1466fe4c
-> 
+
+> The variable pointer_to_i is: 0x7feb1466fe4c
 
 
 
@@ -107,9 +107,10 @@ int main()
 ```
 
 > The address of i is:          0x7f50e0b898ec
-The variable pointer_to_i is: 0x7f50e0b898ec
-The value of the variable pointed to by pointer_to_i is: 5
-> 
+>
+> The variable pointer_to_i is: 0x7f50e0b898ec
+>
+> The value of the variable pointed to by pointer_to_i is: 5
 
 
 
@@ -136,8 +137,11 @@ int main() {
 ```
 
 > The address of i is:          0x7fcf89e338ec
+>
 > The variable pointer_to_i is: 0x7fcf89e338ec
+>
 > The new value of the variable i is                     : 7
+>
 > The value of the variable pointed to by pointer_to_i is: 7
 
 
@@ -166,10 +170,12 @@ int main() {
 ```
 
 > 1
-2
-3
-The first element of v is: 1
-> 
+>
+> 2
+>
+> 3
+>
+> The first element of v is: 1
 
 
 
@@ -200,8 +206,8 @@ int main()
 ```
 
 > The value of i is: 1
-The value of i is now: 2
-> 
+
+> The value of i is now: 2
 
 
 
@@ -237,5 +243,7 @@ int main()
 ```
 
 > The value of i is: 1
-The value of i is now: 2
-The value of the int pointed to by my_pointer is: 2
+>
+> The value of i is now: 2
+>
+> The value of the int pointed to by my_pointer is: 2
