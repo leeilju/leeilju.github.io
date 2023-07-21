@@ -1,7 +1,7 @@
 ---
 title : "C++ Pointers"
 category :
-    - C++
+    - CPP
 tag :
     - C++ Pointers
 toc : true
@@ -10,6 +10,7 @@ comments: true
 sidebar_main: true
 date: 2023-07-21 12:32:23
 ---
+
 # Pointers
 
 Pointers have traditionally been a stumbling block for many students learning C++, but they do not need to be!
