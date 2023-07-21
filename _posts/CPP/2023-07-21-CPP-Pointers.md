@@ -8,7 +8,7 @@ toc : true
 toc_sticky: true
 comments: true
 sidebar_main: true
-date: 2023-07-21-14:30:16
+date: 2023-07-21
 ---
 
 # Pointers
