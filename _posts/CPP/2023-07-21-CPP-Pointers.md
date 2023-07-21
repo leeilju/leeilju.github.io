@@ -1,6 +1,6 @@
 ---
 title : "C++ Pointers"
-category :
+categories :
     - CPP
 tag :
     - C++ Pointers
@@ -8,7 +8,7 @@ toc : true
 toc_sticky: true
 comments: true
 sidebar_main: true
-date: 2023-07-21 12:32:23
+date: 2023-07-21
 ---
 
 # Pointers
