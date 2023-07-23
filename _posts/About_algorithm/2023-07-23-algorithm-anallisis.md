@@ -1,17 +1,14 @@
 ---
-
 title : "What is Algorithm"
 categories :
-
-   - Algorithm_study
-  tag :
-      - Algorithm_study
-  toc : true
-  toc_sticky: true
-  comments: true
-  sidebar_main: true
-  date: 2023-07-23
-
+    - Algorithm_study
+tag :
+    - Algorithm_study
+toc : true
+toc_sticky: true
+comments: true
+sidebar_main: true
+date: 2023-07-23
 ---
 
 # 알고리즘 분석
