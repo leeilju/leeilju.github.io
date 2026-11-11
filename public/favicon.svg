@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+  <rect width="128" height="128" rx="28" fill="#006cac" />
+  <text
+    x="64"
+    y="90"
+    text-anchor="middle"
+    font-family="Pretendard, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif"
+    font-size="72"
+    font-weight="700"
+    letter-spacing="-3"
+    fill="#ffffff"
+  >
+    IL
+  </text>
+</svg>
