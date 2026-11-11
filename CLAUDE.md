@@ -55,6 +55,15 @@ Ilju Lee의 개인 기술 블로그. Astro 7 + AstroPaper v7.1.0 테마 기반�
 - 댓글(Giscus), 색상 스킴 변경, LaTeX 지원 등은 업스트림 가이드를 참고해 적용.
 - 의존성 업데이트: `npm outdated` → `npm update` → 빌드 확인. Astro 메이저 업그레이드는 `npx @astrojs/upgrade`.
 
+## GitHub 저장소 설정 메모
+
+- 이 저장소에는 2023년에 만든 Jekyll 블로그가 `master` 브랜치에 남아 있다(새 블로그로 옮기지 않기로 함). 새 블로그는 `main` 브랜치다.
+- 첫 배포(2026-11-11)는 `github-pages` 환경의 배포 브랜치 규칙이 `master`만 허용해서 "Branch main is not allowed to deploy to github-pages due to environment protection rules"로 실패했다. 필요한 설정은 세 가지다.
+  - Settings → Environments → `github-pages` → Deployment branches and tags: `main` 허용(또는 No restriction)
+  - Settings → Pages → Build and deployment → Source: **GitHub Actions**
+  - Settings → General → Default branch: `main`
+- 배포 상태는 https://github.com/leeilju/leeilju.github.io/actions 에서 본다. 공개 저장소라 비로그인으로도 `https://api.github.com/repos/leeilju/leeilju.github.io/actions/runs` 로 조회할 수 있다.
+
 ## 주의
 
 - `public/pagefind/`는 빌드 산출물이며 `.gitignore`에 있다.
