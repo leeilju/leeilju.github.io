@@ -4,6 +4,7 @@ export default {
   nav: {
     home: "Home",
     posts: "Posts",
+    categories: "Categories",
     tags: "Tags",
     about: "About",
     archives: "Archives",
@@ -22,6 +23,7 @@ export default {
     editPage: "Edit page",
     previousPost: "Previous Post",
     nextPost: "Next Post",
+    seriesLabel: "Series",
   },
   pagination: {
     prev: "Prev",
@@ -53,6 +55,11 @@ export default {
 
     searchTitle: "Search",
     searchDesc: "Search any article ...",
+
+    categoriesTitle: "Categories",
+    categoriesDesc: "Posts grouped by topic and series.",
+    categoriesOthers: "Other posts",
+    categoriesEmpty: "No posts yet.",
   },
   a11y: {
     skipToContent: "Skip to content",

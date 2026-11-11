@@ -1,5 +1,6 @@
 ---
 title: "솔레노이드 브레이크 (2) 첫 측정: 열전대 로거 자체 프로그램과 두 개체의 L·열 특성"
+shortTitle: "첫 측정과 자체 수집 프로그램"
 description: "열전대 로거를 직접 읽는 Python 프로그램을 만들고, 두 개체로 위치별 인덕턴스와 정상상태 열 특성을 처음 쟀다. 12 V 연속 통전은 불가능하고 Hit-and-Hold가 필수라는 결론, 그리고 측정 방법에서 배운 것들."
 pubDatetime: 2026-10-19T22:00:00+09:00
 modDatetime: 2026-11-11T23:00:00+09:00
@@ -10,9 +11,6 @@ tags:
   - thermal
 draft: false
 ---
-
-> **솔레노이드 브레이크 시리즈**
-> [1. 왜 재기 시작했나](/posts/solenoid/01-why-measure/) · [2. 첫 측정과 자체 수집 프로그램](/posts/solenoid/02-first-measurements/) · [3. 열전대를 권선에 붙이고](/posts/solenoid/03-winding-probe-and-test-plan/) · [4. 입고 LCR 전수 측정 자동화](/posts/solenoid/04-incoming-lcr-automation/) · [5. 펌웨어 테이블은 비율로](/posts/solenoid/05-firmware-table-by-ratio/) · [6. 측정 오차 보정과 보드용 곡선](/posts/solenoid/06-error-correction-and-board-curves/)
 
 ## 열전대 로거를 직접 읽기로 했다
 

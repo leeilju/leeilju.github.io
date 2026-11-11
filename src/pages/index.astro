@@ -57,7 +57,14 @@ const homePath = getRelativeLocaleUrl(locale, "");
         기록하는 블로그입니다.
       </p>
       <p class="mt-2">
-        블로그와 저에 대한 소개는{" "}
+        글은{" "}
+        <LinkButton
+          class="hover:text-accent underline decoration-dashed underline-offset-4"
+          href={getRelativeLocaleUrl(locale, "categories")}
+        >
+          카테고리 페이지
+        </LinkButton>에서 주제별 시리즈로 볼 수 있습니다. 블로그와 저에 대한
+        소개는{" "}
         <LinkButton
           class="hover:text-accent underline decoration-dashed underline-offset-4"
           href={getRelativeLocaleUrl(locale, "about")}

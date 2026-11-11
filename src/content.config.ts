@@ -13,6 +13,8 @@ const posts = defineCollection({
       pubDatetime: z.date(),
       modDatetime: z.date().optional().nullable(),
       title: z.string(),
+      // 시리즈 목차와 카테고리 페이지에 쓰는 짧은 제목. 없으면 title을 쓴다.
+      shortTitle: z.string().optional(),
       featured: z.boolean().optional(),
       draft: z.boolean().optional(),
       tags: z.array(z.string()).default(["others"]),

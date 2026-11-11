@@ -1,0 +1,75 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { getRelativeLocaleUrl } from "astro:i18n";
+import { getPostUrl } from "@/utils/getPostPaths";
+import { findSeries, getSeriesId, getSeriesPosts } from "@/utils/getSeries";
+import { useTranslations } from "@/i18n";
+import config from "@/config";
+
+type Props = {
+  /** The post being rendered. */
+  post: CollectionEntry<"posts">;
+  /** All posts of the collection; the series members are picked from here. */
+  posts: CollectionEntry<"posts">[];
+};
+
+const { post, posts } = Astro.props;
+const locale = Astro.currentLocale ?? config.site.lang;
+const t = useTranslations(locale);
+
+const seriesId = getSeriesId(post);
+const found = findSeries(seriesId);
+const seriesPosts = found && seriesId ? getSeriesPosts(posts, seriesId) : [];
+const current = seriesPosts.findIndex(p => p.id === post.id);
+const categoriesUrl = getRelativeLocaleUrl(locale, "categories").replace(
+  /\/+$/,
+  ""
+);
+---
+
+{
+  found && seriesPosts.length > 0 && (
+    <nav
+      aria-label={t.post.seriesLabel}
+      data-pagefind-ignore
+      class="border-border bg-muted/40 mt-6 rounded-lg border px-4 py-3 text-sm sm:px-5"
+    >
+      <p class="flex flex-wrap items-baseline gap-x-2">
+        <span class="text-muted-foreground">{t.post.seriesLabel}</span>
+        <a
+          href={`${categoriesUrl}/#${found.series.id}`}
+          class="hover:text-accent font-semibold underline decoration-dashed underline-offset-4"
+        >
+          {found.series.title}
+        </a>
+        <span class="text-muted-foreground">
+          {current + 1} / {seriesPosts.length}
+        </span>
+        <a
+          href={`${categoriesUrl}/#${found.category.id}`}
+          class="text-muted-foreground hover:text-accent ms-auto"
+        >
+          {found.category.title}
+        </a>
+      </p>
+      <ol class="mt-2 list-decimal space-y-1 ps-5">
+        {seriesPosts.map(p =>
+          p.id === post.id ? (
+            <li class="font-semibold" aria-current="page">
+              {p.data.shortTitle ?? p.data.title}
+            </li>
+          ) : (
+            <li>
+              <a
+                href={getPostUrl(p.id, p.filePath, locale)}
+                class="hover:text-accent underline decoration-dashed underline-offset-4"
+              >
+                {p.data.shortTitle ?? p.data.title}
+              </a>
+            </li>
+          )
+        )}
+      </ol>
+    </nav>
+  )
+}

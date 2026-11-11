@@ -9,6 +9,7 @@ import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
 import { rehypeHeadingIds, unified } from "@astrojs/markdown-remark";
 import rehypeCallouts from "rehype-callouts";
+import remarkGfm from "remark-gfm";
 import {
   transformerNotationDiff,
   transformerNotationHighlight,
@@ -44,6 +45,11 @@ export default defineConfig({
     // stay in package.json so a customised config importing them still builds,
     // and are removed in v8.
     processor: unified({
+      // GFM은 직접 넣는다. 기본 remark-gfm은 `~` 하나만 써도 취소선으로 바꾸는데,
+      // 한국어 범위 표기("1~5 rpm")가 그대로 취소선이 되므로 singleTilde를 끈다.
+      // 취소선은 `~~이렇게~~` 쓴다.
+      gfm: false,
+      remarkPlugins: [[remarkGfm, { singleTilde: false }]],
       rehypePlugins: [
         rehypeHeadingIds,
         rehypeInlineToc,

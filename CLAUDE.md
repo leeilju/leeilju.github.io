@@ -14,10 +14,11 @@ Ilju Lee의 개인 기술 블로그. Astro 7 + AstroPaper v7.1.0 테마 기반�
 ## 글 작성 규칙
 
 - 위치: `src/content/posts/`. 하위 폴더 가능하며 폴더명이 URL에 포함된다. `_`로 시작하는 폴더/파일은 빌드에서 제외.
-- 스키마: `src/content.config.ts`. `title`, `description`, `pubDatetime` 필수. `tags` 기본값 `["others"]`. `draft`, `featured`, `modDatetime`, `ogImage`, `hideToc`, `timezone` 선택.
+- 스키마: `src/content.config.ts`. `title`, `description`, `pubDatetime` 필수. `tags` 기본값 `["others"]`. `draft`, `featured`, `modDatetime`, `ogImage`, `hideToc`, `timezone`, `shortTitle`(시리즈 목차·카테고리 페이지에 쓰는 짧은 제목) 선택.
 - 날짜 형식: `2026-11-11T20:00:00+09:00` (KST). 사이트 타임존은 `Asia/Seoul`. 게시 여부는 날짜 단위로 판단된다(미래 날짜는 빌드에서 제외).
 - 파일명은 영문 kebab-case이고 그대로 URL 슬러그가 된다. frontmatter `slug:`로 덮어쓸 수 있다.
 - 본문은 한국어. 코드블록에는 언어를 표기한다. 이미지는 `src/assets/images/`에 두고 `@/assets/images/...`로 참조한다.
+- 마크다운 주의점(2026-11-12 확인). 범위 표기 `1~5 rpm`의 `~` 하나는 그대로 써도 된다(`astro.config.ts`에서 remark-gfm `singleTilde`를 껐다). 취소선은 `~~글~~`. 굵게 표시의 닫는 `**` 바로 앞이 `)`나 `]` 같은 문장부호이고 바로 뒤에 조사가 붙으면(`**기동 전류(마찰)**에`) CommonMark가 닫지 못해 `**`가 그대로 보인다. 괄호를 굵게 밖으로 빼거나(`**기동 전류**(마찰)에`) 뒤에 띄어쓴다.
 - 글을 고치면 `modDatetime`을 갱신한다.
 
 ## 블로그의 성격과 업무 기록 규칙
@@ -28,7 +29,14 @@ Ilju Lee의 개인 기술 블로그. Astro 7 + AstroPaper v7.1.0 테마 기반�
 - 회사 코드 원문. 측정 원리, 설계 결정과 그 근거, 스스로 만든 도구의 동작 방식, 장비 모델명(시판 계측기), 부품 특성 수치 정도는 쓸 수 있다.
 - 자료 출처는 사용자의 작업 폴더(예: `C:\local_ws\contact_thermal_sensor\thermo_ws`), Notion 메모, 다른 Claude 세션 기록이다. 가져올 때 위 항목을 걸러낸다.
 
-업무 기록은 주제별 시리즈로 쓴다. 솔레노이드 브레이크 시리즈는 `src/content/posts/solenoid/`에 번호 붙은 파일 6편이 있고, 각 글 맨 위에 시리즈 링크 인용 블록이 있다(새 편을 추가하면 모든 편의 블록을 갱신). 시리즈 글의 `pubDatetime`은 글을 쓴 날이 아니라 **그 작업을 한 날**이고, 정리해서 쓴 날은 `modDatetime`에 둔다. 문체는 평어체("~다"), 수식은 KaTeX가 없으므로 인라인 코드로 쓴다.
+업무 기록은 주제별 시리즈로 쓰고, 시리즈는 카테고리로 묶는다(2026-11-12 추가).
+
+- 시리즈 = `src/content/posts/<시리즈 id>/` 폴더. 폴더 안의 글은 자동으로 그 시리즈에 속한다. 글 순서는 파일명 순(`01-`, `02-` 접두사).
+- 카테고리와 시리즈의 제목·설명은 `src/data/categories.ts`에 등록한다. 새 시리즈 = 폴더 + 등록 한 항목. 등록되지 않은 폴더나 루트의 글은 `/categories/` 페이지의 "기타"에 나온다.
+- 글 상단의 시리즈 목차는 `src/components/SeriesNav.astro`가 자동으로 그린다(손으로 쓴 링크 블록은 쓰지 않는다). 목차와 `/categories/` 페이지는 frontmatter `shortTitle`을 쓰므로 시리즈 글에는 꼭 넣는다.
+- 현재 카테고리 "모터제어"에 두 시리즈가 있다. 안티코깅(`anti-cogging/`, 4편. 자료는 `C:\local_ws\Motor_jig_firmware`의 인수인계·조사 문서와 `C:\local_ws\디스어셈블` 작업 폴더, 해당 Claude 세션 기록)과 솔레노이드 브레이크(`solenoid/`, 6편. 자료는 thermo_ws).
+- 시리즈 글의 `pubDatetime`은 글을 쓴 날이 아니라 **그 작업을 한 날**이고, 정리해서 쓴 날은 `modDatetime`에 둔다. 문체는 평어체("~다"), 수식은 KaTeX가 없으므로 인라인 코드나 `text` 코드블록으로 쓴다.
+- 안티코깅 시리즈의 추가 규칙: 역분석한 시판 드라이버의 제조사·모델명, 펌웨어 주소·메모리 배치·프로토콜 식별자, 벤더 고유 파라미터 값은 쓰지 않는다. 동작 원리와 한계, 공개 논문과 공개 제품(ODrive, moteus, 상용 서보 등)의 공개 사양은 쓸 수 있다.
 
 ## 설정 위치
 
@@ -41,6 +49,8 @@ Ilju Lee의 개인 기술 블로그. Astro 7 + AstroPaper v7.1.0 테마 기반�
 | 코드 폰트, `word-break: keep-all`    | `src/styles/global.css`                                               |
 | `<head>` (Pretendard CDN 링크 포함)  | `src/layouts/Layout.astro`                                            |
 | 홈 화면 인사말                       | `src/pages/index.astro`                                               |
+| 카테고리·시리즈 정의                 | `src/data/categories.ts`                                              |
+| 시리즈 목차, 카테고리 페이지         | `src/components/SeriesNav.astro`, `src/pages/categories/index.astro`, `src/utils/getSeries.ts` |
 | 소개 페이지                          | `src/content/pages/about.md`                                          |
 | 날짜 표시 형식                       | `src/components/Datetime.astro` (ko → `YYYY.MM.DD`)                   |
 | OG 이미지(기본 / 글별)               | `src/pages/og.png.ts`, `src/pages/posts/[...slug]/index.png.ts`       |
@@ -55,6 +65,7 @@ Ilju Lee의 개인 기술 블로그. Astro 7 + AstroPaper v7.1.0 테마 기반�
 - OG 이미지 폰트를 Astro fonts API 대신 `loadGoogleFont("Noto Sans KR")`로 교체(한글 깨짐 방지). `src/utils/getFontPathByWeight.ts` 삭제.
 - `Datetime.astro` 날짜 형식 로케일 분기.
 - 홈 화면(`index.astro`) 인사말, `about.md`, `favicon.svg`, `README.md` 교체. `public/default-og.jpg` 삭제(자동 생성 OG 사용).
+- 카테고리·시리즈 기능 추가(2026-11-12): `src/data/categories.ts`, `src/utils/getSeries.ts`, `src/components/SeriesNav.astro`, `src/pages/categories/index.astro`, 스키마 `shortTitle`, i18n 키(`nav.categories`, `post.seriesLabel`, `pages.categories*`, en·ko 모두), 헤더 메뉴와 브레드크럼에 "카테고리", 글 페이지(`posts/[...slug]/index.astro`)에 `SeriesNav` 삽입, 홈 인사말에 카테고리 링크.
 - 샘플 글/이미지, Docker, pnpm, 업스트림 GitHub 메타 파일(이슈 템플릿 등) 제거. `ci.yml` → `deploy.yml`.
 - 업스트림 가이드 글(글 작성 규칙, 색상 스킴, Giscus 댓글, LaTeX, 의존성 업데이트)은 https://github.com/satnaing/astro-paper 의 `src/content/posts/`에 있다. 기능 추가 시 참고.
 

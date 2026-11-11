@@ -4,6 +4,7 @@ export default {
   nav: {
     home: "홈",
     posts: "글",
+    categories: "카테고리",
     tags: "태그",
     about: "소개",
     archives: "아카이브",
@@ -22,6 +23,7 @@ export default {
     editPage: "페이지 수정",
     previousPost: "이전 글",
     nextPost: "다음 글",
+    seriesLabel: "시리즈",
   },
   pagination: {
     prev: "이전",
@@ -53,6 +55,11 @@ export default {
 
     searchTitle: "검색",
     searchDesc: "글을 검색해 보세요 ...",
+
+    categoriesTitle: "카테고리",
+    categoriesDesc: "주제별 시리즈로 묶은 글 목록입니다.",
+    categoriesOthers: "기타",
+    categoriesEmpty: "아직 글이 없습니다.",
   },
   a11y: {
     skipToContent: "본문으로 건너뛰기",

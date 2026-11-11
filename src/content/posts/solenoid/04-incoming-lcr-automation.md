@@ -1,5 +1,6 @@
 ---
 title: "솔레노이드 브레이크 (4) 입고 LCR 전수 측정 자동화: 500개를 Enter 한 번씩"
+shortTitle: "입고 LCR 전수 측정 자동화"
 description: "PC 통신이 되는 LCR 미터를 빌려 잠금·해제 위치의 Ls·Q·Rs·Rdc를 자동 기록하는 배치 도구를 만들고, 두 종류 500여 개의 통계와 입고 검사 기준안을 냈다. 미터를 바꾸면 값이 달라진다는 교훈과 상세 시험 개체 선정 규칙."
 pubDatetime: 2026-11-05T22:00:00+09:00
 modDatetime: 2026-11-11T23:00:00+09:00
@@ -9,9 +10,6 @@ tags:
   - python
 draft: false
 ---
-
-> **솔레노이드 브레이크 시리즈**
-> [1. 왜 재기 시작했나](/posts/solenoid/01-why-measure/) · [2. 첫 측정과 자체 수집 프로그램](/posts/solenoid/02-first-measurements/) · [3. 열전대를 권선에 붙이고](/posts/solenoid/03-winding-probe-and-test-plan/) · [4. 입고 LCR 전수 측정 자동화](/posts/solenoid/04-incoming-lcr-automation/) · [5. 펌웨어 테이블은 비율로](/posts/solenoid/05-firmware-table-by-ratio/) · [6. 측정 오차 보정과 보드용 곡선](/posts/solenoid/06-error-correction-and-board-curves/)
 
 ## 상황
 
@@ -51,7 +49,7 @@ CSV 열은 `NUMBER, TYPE, L_LOW, Q_LOW, R_LOW, DCR_LOW, L_HIGH, Q_HIGH, R_HIGH, 
 - LOW/HIGH가 뒤바뀐 행: 두 모집단이 멀리 떨어져 있으므로(BIG 8.8 vs 17 mH) 중앙값의 기하평균을 경계로 어느 쪽인지 판단해 교환하거나, 한쪽만 잘못됐으면 그 단계 값을 비운다.
 - 손으로 L을 고친 행에 다른 단계의 Q·Rs가 남은 경우: 한 판독 안에서는 `Q · Rs = ω · Ls`가 정확히 성립해야 한다. 10% 넘게 어긋나면 그 단계의 Q·Rs만 빼고 L·DCR은 쓴다.
 
-통계는 종류별로 평균·σ·CV·최소·최대·**평균 ± 3σ(입고 기준안)**, 그리고 이상치. 이상치는 표준편차가 아니라 **robust z = (x − 중앙값) / (1.4826·MAD)**로 잡는다. 이상치가 섞인 표본에서 σ 자체가 부풀기 때문이다.
+통계는 종류별로 평균·σ·CV·최소·최대·**평균 ± 3σ(입고 기준안)**, 그리고 이상치. 이상치는 표준편차가 아니라 **robust z** = `(x − 중앙값) / (1.4826·MAD)`로 잡는다. 이상치가 섞인 표본에서 σ 자체가 부풀기 때문이다.
 
 ## 결과
 
