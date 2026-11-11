@@ -71,6 +71,7 @@ Ilju Lee의 개인 기술 블로그. Astro 7 + AstroPaper v7.1.0 테마 기반�
   - Settings → Environments → `github-pages` → Deployment branches and tags: `main` 허용(또는 No restriction)
   - Settings → Pages → Build and deployment → Source: **GitHub Actions**
   - Settings → General → Default branch: `main`
+- 2026-11-11 저녁 `master` 삭제·기본 브랜치 변경 뒤 Pages Source가 "Deploy from a branch"로 되돌아간 것으로 보인다. push마다 GitHub 기본 Jekyll 워크플로("pages build and deployment")가 함께 돌고 실패하며(우리 `deploy.yml`은 성공하고 사이트도 정상), 이 실패 실행이 Actions 탭에 보이면 Settings → Pages → Source를 다시 **GitHub Actions**로 바꾼다.
 - 배포 상태는 https://github.com/leeilju/leeilju.github.io/actions 에서 본다. 공개 저장소라 비로그인으로도 `https://api.github.com/repos/leeilju/leeilju.github.io/actions/runs` 로 조회할 수 있다.
 
 ## 주의
